@@ -1,33 +1,24 @@
-# Auth0 - Go Web App
+# Auth0 - Go Token Web App
 
-This sample demonstrates how to add authentication to a Go web app using Auth0.
+This sample app has been modified to produce an `id_token` and `refresh_token` to  stdout in the console once you've authenticated through your web browser
 
-Check the [Go Quickstart](https://auth0.com/docs/quickstart/webapp/golang) to better understand this sample.
 
-## What is Auth0?
+### Prerequisites
 
-Auth0 helps you to:
+You'll need an [Auth0](https://auth0.com/) account and web [client](https://auth0.com/docs/clients)
 
-* Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, among others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
-* Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
-* Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
-* Support for generating signed [JSON Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
-* Analytics of how, when and where users are logging in.
-* Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
+Auth0 Jargon:
+* Auth0 Regular WebApp client
+* Your client must be authorised in both the management and extensions API
+* The extensions API should have `read:user_idp_tokens` scope and the __Allow Offline Access__ activated
 
-## Create a free account in Auth0
 
-1. Go to [Auth0](https://auth0.com) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
+### Usage
 
-## Issue Reporting
+Assuming you have set up a client in [Auth0](https://auth0.com/)?
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+You'll need to retrieve values from your Auth0 client for the environment variables listed in the `.env` file
 
-## Author
+Once done, simply run the `exec.sh` script and browse to [http://localhost:3000](http://localhost:3000) where you can authenticate
 
-[Auth0](auth0.com)
-
-## License
-
-This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+Your `id_token` and `refresh_token` output can be found in the console you ran the `exec.sh` from

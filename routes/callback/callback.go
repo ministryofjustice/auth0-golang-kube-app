@@ -8,7 +8,9 @@ import (
 	"golang.org/x/oauth2"
 	"net/http"
 	"os"
+	"fmt"
 )
+
 
 func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -68,12 +70,16 @@ func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 
 	session.Values["id_token"] = token.Extra("id_token")
 	session.Values["access_token"] = token.AccessToken
+	session.Values["refresh_token"] = token.RefreshToken
 	session.Values["profile"] = profile
 	err = session.Save(r, w)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+
+	fmt.Println("Refresh Token: ", token.RefreshToken)
+	fmt.Println("ID Token: ", token.Extra("id_token"))
 
 	// Redirect to logged in page
 	http.Redirect(w, r, "/user", http.StatusSeeOther)
