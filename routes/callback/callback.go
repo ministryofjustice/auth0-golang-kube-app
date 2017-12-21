@@ -1,16 +1,15 @@
 package callback
 
 import (
+	"../../app"
 	"context"
 	_ "crypto/sha512"
 	"encoding/json"
-	"../../app"
+	"fmt"
 	"golang.org/x/oauth2"
 	"net/http"
 	"os"
-	"fmt"
 )
-
 
 func CallbackHandler(w http.ResponseWriter, r *http.Request) {
 

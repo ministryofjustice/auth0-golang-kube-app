@@ -1,10 +1,21 @@
 package user
 
 import (
-	"../../app"
 	templates ".."
+	"../../app"
 	"net/http"
 )
+
+type TokenInfo struct {
+	AccessToken  string
+	IDToken      string
+	RefreshToken string
+}
+
+type UserInfo struct {
+	Profile interface{}
+	Token   TokenInfo
+}
 
 func UserHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -14,5 +25,14 @@ func UserHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	templates.RenderTemplate(w, "user", session.Values["profile"])
+	userInfo := UserInfo{
+		Profile: session.Values["profile"],
+		Token: TokenInfo{
+			AccessToken:  session.Values["access_token"].(string),
+			IDToken:      session.Values["id_token"].(string),
+			RefreshToken: string(session.Values["refresh_token"].(string)),
+		},
+	}
+
+	templates.RenderTemplate(w, "user", userInfo)
 }
