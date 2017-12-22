@@ -15,7 +15,21 @@ Auth0 Jargon:
 * The extensions API should have `read:user_idp_tokens` scope and the __Allow Offline Access__ activated
 
 
+__Required Environments Variables__
+
+Values can be found in [Auth0](https://auth0.com/) client settings
+
+```
+AUTH0_CLIENT_ID=< client id >
+AUTH0_DOMAIN=< domain >
+AUTH0_CLIENT_SECRET=< client_secret >
+AUTH0_CALLBACK_URL=http://localhost:3000/callback
+AUTH0_AUDIENCE=urn:auth0-authz-api
+```
+
 ### Usage
+
+__With Docker__
 
 Assuming you have set up a client in [Auth0](https://auth0.com/)?
 
@@ -26,3 +40,19 @@ Once done, simply run the `exec.sh/exec.ps1` script and browse to [http://localh
 Your `id_token` and `refresh_token` output can be copy&pasted from the console you ran the `exec.sh` from or your browser
 
 See [refresh_token](https://auth0.com/docs/tokens/refresh-token/current) and [id_token](https://auth0.com/docs/tokens/id-token#overview) docs for more info
+
+
+__or__
+
+Use my container and supply your own `.env` file
+
+`docker run -d --env-file .env -p 3000:3000 quay.io/djsd123/auth0-golang-kube-app`
+
+
+__Without Docker__
+
+* First set the environment variables defined above
+
+* Run `go run main.go server.go`
+
+* Browse to [http://localhost:3000](http://localhost:3000)
