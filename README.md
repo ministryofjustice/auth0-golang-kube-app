@@ -1,6 +1,8 @@
 # Auth0 - Go Token Web App
 
-This sample app has been modified to produce an `id_token` and `refresh_token` to  stdout in the console once you've authenticated through your web browser
+This sample app has been modified to produce an `id_token` and `refresh_token` to stdout and your web browser once you've authenticated with [Auth0](https://auth0.com/)
+
+My use case was for Kubernetes cluster auth, namely [Option 1](https://kubernetes.io/docs/admin/authentication/#using-kubectl) when configuring OpenID Connect for `kubectl`
 
 
 ### Prerequisites
@@ -19,6 +21,8 @@ Assuming you have set up a client in [Auth0](https://auth0.com/)?
 
 You'll need to retrieve values from your Auth0 client for the environment variables listed in the `.env` file
 
-Once done, simply run the `exec.sh` script and browse to [http://localhost:3000](http://localhost:3000) where you can authenticate
+Once done, simply run the `exec.sh/exec.ps1` script and browse to [http://localhost:3000](http://localhost:3000) where you can authenticate
 
-Your `id_token` and `refresh_token` output can be found in the console you ran the `exec.sh` from
+Your `id_token` and `refresh_token` output can be copy&pasted from the console you ran the `exec.sh` from or your browser
+
+See [refresh_token](https://auth0.com/docs/tokens/refresh-token/current) and [id_token](https://auth0.com/docs/tokens/id-token#overview) docs for more info
