@@ -46,7 +46,7 @@ __or__
 
 Use my container and supply your own `.env` file
 
-`docker run -d --env-file .env -p 3000:3000 quay.io/djsd123/auth0-golang-kube-app`
+`docker container run --rm -it --env-file < .env > -p 3000:3000 quay.io/mojanalytics/auth0-golang-kube-app`
 
 
 __Without Docker__
@@ -56,3 +56,15 @@ __Without Docker__
 * Run `go run main.go server.go`
 
 * Browse to [http://localhost:3000](http://localhost:3000)
+
+#### Logout
+
+Remember to __Logout__ to end your session once you have finished.
+
+#### Troubleshooting 
+
+Clearing __cookies__ tends to resolve any unexpected behaviour.  Particularly  __cookies__ with __localhost__ in the name
+
+
+Try accessing the app in another browser
+
